@@ -35,7 +35,7 @@ resource "aws_s3_bucket_policy" "policy" {
   bucket = aws_s3_bucket.my_bucket.id
 
 depends_on = [ 
-    aws_s3_bucket_public_access_block.public_access
+    aws_s3_bucket_public_access_block.public_accessgit 
  ]
 
   policy = jsonencode({
@@ -56,5 +56,6 @@ resource "aws_s3_object" "index" {
   key = "index.html"
   source = "index.html"
     content_type = "text/html"
+    etag = filemd5("index.html")
 
 }
